@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Günlük Soru Çözme Takibi - Sonuçlar</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    body {
+  background-color: black;
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid white;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+h1 {
+            color: #55cdfc;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+<body>
+	<div class="container">
+		<h1>Sonuçlar</h1>
+		{% if sonuc %}
+		<table>
+			<thead>
+				<tr>
+					<th>Ders</th>
+					<th>Toplam Soru Sayısı</th>
+					<th>Günlük Soru Sayısı (Son 30 Gün)</th>
+					<th>Günlük Ortalama Soru Sayısı (Son 30 Gün)</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ders in sonuc['toplam_sorular'] %}
+				<tr>
+					<td>{{ ders }}</td>
+					<td>{{ sonuc['toplam_sorular'][ders] }}</td>
+					<td>{{ sonuc['gunluk_sorular'][ders] }}</td>
+					<td>{{ sonuc['gunluk_ortalama'][ders] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>Henüz veri yok.</p>
+		{% endif %}
+		<p><a href="{{ url_for('index') }}">Geri dön</a></p>
+	</div>
+</body>
+</html>

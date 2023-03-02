@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders Soru Takip Sistemi</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            color: #55cdfc;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        label {
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+        input[type=submit] {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #55cdfc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        select {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #55cdfc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        option {
+            background-color: black;
+        }
+        .p {
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ders Soru Takip Sistemi</h1>
+    <form method="POST">
+        <label for="ders">Ders:</label>
+        <select name="ders" id="ders">
+            <option value="Türkçe">Türkçe</option>
+            <option value="Fen Bilgisi">Fen Bilgisi</option>
+            <option value="İngilizce">İngilizce</option>
+            <option value="Matematik">Matematik</option>
+            <option value="Tarih">Tarih</option>
+            <option value="Din Kültürü">Din Kültürü</option>
+        </select>
+        <p for="soru_sayisi">Çözülen Soru Sayısı:</p>
+        <input type="number" name="soru_sayisi" id="soru_sayisi" min="0" required>
+        <input type="submit" value="Kaydet">
+        <p><a href="{{ url_for('sonuclar') }}">Sonuçlara Bak</a></p>
+    </form>
+</body>
+</html>
